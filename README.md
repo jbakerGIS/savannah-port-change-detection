@@ -50,3 +50,44 @@ ArcGIS Pro / QGIS
 Python (optional)
 
 Raster analysis workflows
+
+## Repo Structure
+```
+Savannah-Port-Change-Detection/
+│
+├── README.md
+│
+├── data/
+│   ├── raw/
+│   │   ├── sentinel2_2015/
+│   │   ├── sentinel2_2019/
+│   │   └── sentinel2_2024/
+│   │
+│   ├── processed/
+│   │   ├── cloud_masked/
+│   │   ├── indices/
+│   │   └── change_detection/
+│   │
+│   └── vector/
+│       ├── aoi_boundary.gpkg
+│       ├── transportation.gpkg
+│       └── administrative_boundaries.gpkg
+│
+├── scripts/
+│   ├── preprocess_imagery.py
+│   ├── calculate_indices.py
+│   └── change_detection.py
+│
+├── maps/
+│   ├── baseline_2015.png
+│   ├── comparison_2015_2024.png
+│   └── change_detection_map.png
+│
+├── analysis/
+│   ├── figures/
+│   └── tables/
+│
+└── report/
+    ├── Savannah_Port_GEOINT_Assessment.pdf
+    └── figures/
+```
