@@ -1,0 +1,99 @@
+# ============================================
+# Sentinel-2 SAFE archives and imagery
+# ============================================
+
+# Sentinel SAFE directories
+*.SAFE/
+**/*.SAFE/
+
+# Copernicus JP2 imagery
+*.jp2
+**/*.jp2
+
+# Large raster formats
+*.tif
+*.tiff
+*.img
+*.hdr
+*.aux.xml
+*.ovr
+
+# Raster pyramids and caches
+*.rrd
+*.vrt
+
+# ============================================
+# Derived geospatial outputs (large files)
+# ============================================
+
+# Processed raster outputs
+/data/raw/
+/data/processed/
+/analysis/figures/
+/maps/*.png
+/maps/*.jpg
+/maps/*.tif
+
+# ============================================
+# Temporary GIS files
+# ============================================
+
+# ArcGIS Pro
+*.aprx
+*.aprx~
+*.lock
+*.lpkx
+*.mpkx
+
+# QGIS
+*.qgz~
+*.qgs~
+.qgis2/
+
+# GDAL temp files
+*.tmp
+*.bak
+
+# ============================================
+# Python cache and environments
+# ============================================
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+env/
+
+# ============================================
+# OS and editor junk
+# ============================================
+
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ============================================
+# Logs and reports
+# ============================================
+
+*.log
+*.out
+*.pdf
+
+# ============================================
+# Allow important small files
+# ============================================
+
+!.gitignore
+!README.md
+!scripts/
+!scripts/**/*.py
+!analysis/
+!analysis/**/*.md
+!report/
+!report/**/*.md
