@@ -1,93 +1,92 @@
-# Savannah Port Infrastructure Change Detection (2015–2024)
+# Savannah Port Change Detection Using Sentinel-2
+
 ## Overview
 
-This project applies open-source remote sensing and geospatial analysis techniques to assess infrastructure expansion in the Port of Savannah region between 2015 and 2024. The analysis simulates a GEOINT-style workflow focused on identifying, quantifying, and interpreting land use change related to logistics and port operations.
+This project uses Sentinel-2 multispectral imagery to examine land-cover and vegetation changes around the Port of Savannah, Georgia, between 2016 and 2024.
 
-## Analytic Question
+The analysis demonstrates a beginner-level remote sensing workflow implemented entirely in Python, including raster preprocessing, cloud masking, spectral index calculation, and image-based change detection.
 
-How has port-related and logistics infrastructure expanded over time in the Port of Savannah region, and what does this indicate about operational capacity and land use change?
+The project was developed as part of my graduate application portfolio to demonstrate practical skills in geospatial programming, remote sensing, and environmental data analysis.
 
-## Data Sources
+---
 
-Sentinel-2 multispectral imagery (2015, 2019, 2024)
+## Objectives
 
-Landsat 8/9 imagery (trend validation)
+The primary objectives of this project are to:
 
-Open transportation and administrative boundary data
+- Process multi-temporal Sentinel-2 Level-2A imagery using Python
+- Apply a study-area boundary using a GeoJSON file
+- Mask clouds and other invalid pixels using the Sentinel-2 Scene Classification Layer (SCL)
+- Prepare consistent imagery for comparison across multiple years
+- Calculate Normalized Difference Vegetation Index (NDVI)
+- Examine changes in vegetation and land cover across the study period
+- Create clear visual outputs that demonstrate the results of the analysis
 
-## Methods Summary
+---
 
-Cloud masking and atmospheric correction
+## Study Area
 
-AOI-based clipping and temporal alignment
+The study area encompasses the Port of Savannah and surrounding areas in coastal Georgia.
 
-Derivation of NDBI and NDVI indices
+The region contains a mixture of:
 
-Multi-temporal change detection
+- Port and industrial development
+- Urban areas
+- Transportation infrastructure
+- Wetlands and marshes
+- Forested and vegetated areas
+- The Savannah River and associated waterways
 
-Spatial interpretation of infrastructure growth patterns
+The area provides an appropriate setting for change detection because of continued industrial and infrastructure development surrounding the port.
 
-## Key Findings
+---
 
-Significant expansion of impervious surfaces adjacent to port terminals
+## Data
 
-Growth patterns aligned with major transportation corridors
+### Sentinel-2
 
-Reduction in vegetated land consistent with logistics and warehousing development
+Multispectral imagery was obtained from the Copernicus Data Space Ecosystem.
 
-## Limitations
+Three Sentinel-2 Level-2A scenes were used:
 
-Moderate spatial resolution limits feature-level identification
+| Year | Satellite | Acquisition Date |
+|------|-----------|------------------|
+| 2016 | Sentinel-2A | September 11, 2016 |
+| 2020 | Sentinel-2A | September 30, 2020 |
+| 2024 | Sentinel-2B | July 16, 2024 |
 
-Analysis based on open-source imagery only
+The analysis uses 20-meter Sentinel-2 bands, including:
 
-Seasonal variability may influence vegetation indices
+- **B02** – Blue
+- **B03** – Green
+- **B04** – Red
+- **B8A** – Near Infrared
+- **SCL** – Scene Classification Layer
 
-## Tools Used
+The SCL layer is used to identify and mask clouds and other pixels unsuitable for analysis.
 
-ArcGIS Pro / QGIS
-
-Python (optional)
-
-Raster analysis workflows
-
-## Repo Structure
+### Project Structure
 ```
-Savannah-Port-Change-Detection/
-│
-├── README.md
+savannah-port-change-detection/
 │
 ├── data/
 │   ├── raw/
-│   │   ├── sentinel2_2015/
-│   │   ├── sentinel2_2019/
-│   │   └── sentinel2_2024/
+│   │   ├── S2A_MSIL2A_2016/
+│   │   ├── S2A_MSIL2A_2020/
+│   │   └── S2B_MSIL2A_2024/
 │   │
-│   ├── processed/
-│   │   ├── cloud_masked/
-│   │   ├── indices/
-│   │   └── change_detection/
-│   │
-│   └── vector/
-│       ├── aoi_boundary.gpkg
-│       ├── transportation.gpkg
-│       └── administrative_boundaries.gpkg
+│   └── study_area/
+│       └── study_area.geojson
 │
-├── scripts/
-│   ├── preprocess_imagery.py
-│   ├── calculate_indices.py
-│   └── change_detection.py
+├── outputs/
+│   ├── clipped/
+│   ├── masked/
+│   ├── ndvi/
+│   └── figures/
 │
-├── maps/
-│   ├── baseline_2015.png
-│   ├── comparison_2015_2024.png
-│   └── change_detection_map.png
+├── notebooks/
+│   └── updated_analysis.ipynb
 │
-├── analysis/
-│   ├── figures/
-│   └── tables/
-│
-└── report/
-    ├── Savannah_Port_GEOINT_Assessment.pdf
-    └── figures/
+├── .gitignore
+└── README.md
 ```
